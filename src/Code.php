@@ -19,6 +19,17 @@ class Code
 
 
     /**
+     * @var string
+     */
+    public static string $PRE = '';
+
+    /**
+     * @var array
+     */
+    public static array $MAP = [];
+
+
+    /**
      * The system keeps the maximum error code
      */
     const MAX_SYS_CODE = 999;
@@ -39,59 +50,33 @@ class Code
     ];
 
     /**
-     * To get the message
-     *
-     * @param $code
+     * @param int $code
      * @return string
      */
-    public function msg (int $code): string
+    public static function msg (int $code): string
     {
-        if ($code < self::MAX_SYS_CODE && isset(self::$SYS_MSG[$code])) {
+        if (isset(self::$SYS_MSG[$code])) {
             return self::$SYS_MSG[$code];
         }
 
-        return $this->map()[$code];
+        return self::$MAP[$code];
     }
 
+
     /**
-     * Gets an error code (prefix included) and a message
-     *
      * @param int $code
      * @param string $msg
      * @return array
      */
-    public function codeMsg (int $code, string $msg = ''): array
+    public static function response (int $code, string $msg = ''): array
     {
         if (empty($msg)) {
-            $msg = $this->msg($code);
+            $msg = self::msg($code);
         }
-        //状态码前缀使用子类名称末尾数字定义
         if ($code > self::MAX_SYS_CODE) {
-            $pre   = '';
-            $class = static::class;
-            $len   = strlen($class);
-            for ($i = $len - 1; $i > 0; $i--) {
-                if (is_numeric($class[$i])) {
-                    $pre = $class[$i] . $pre;
-                }
-                break;
-            }
-            $code = $pre . $code;
+            $code = self::$PRE . $code;
         }
-
         return [$code, $msg];
-    }
-
-
-    /**
-     * Error code => message key-value pair array
-     *
-     *
-     * @return array
-     */
-    public function map (): array
-    {
-        return [];
     }
 
 }

@@ -36,7 +36,7 @@ class Rsp
     public static function err (int $code = Code::ERR_SYS, string $msg = ''): array
     {
         if ($code > Code::MAX_SYS_CODE) {
-            [$code, $msg] = (self::code())->codeMsg($code, $msg);
+            [$code, $msg] = Code::response($code, $msg);
         } else {
             $msg = empty($msg) ? Code::$SYS_MSG[$code] : $msg;
         }
@@ -44,12 +44,5 @@ class Rsp
     }
 
 
-    /**
-     * @return Code
-     */
-    public static function code (): Code
-    {
-        return new Code();
-    }
 
 }
