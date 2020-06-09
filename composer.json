@@ -1,5 +1,5 @@
 {
-    "name": "qubitma/php-api-response",
+    "name": "qubitma/api-response",
     "keywords" : [ "Api", "php" ],
     "description": "PHP API RESPONSE.",
     "version": "v1.0.0",
