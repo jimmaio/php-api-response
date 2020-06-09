@@ -1,7 +1,8 @@
 {
     "name": "qubitma/php-api-response",
     "description": "PHP API RESPONSE.",
-    "minimum-stability": "dev",
+    "version": "0.0.1",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "qubitma",
