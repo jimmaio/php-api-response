@@ -1,0 +1,19 @@
+{
+    "name": "qubitma/php-api-response",
+    "description": "PHP API RESPONSE.",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "qubitma",
+            "email": "qubit.ma@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ApiRsp\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    }
+}
