@@ -1,7 +1,9 @@
 {
     "name": "qubitma/php-api-response",
+    "keywords" : [ "Api", "php" ],
     "description": "PHP API RESPONSE.",
-    "version": "1.0.0",
+    "version": "v1.0.0",
+    "license":"Apache-2.0",
     "authors": [
         {
             "name": "qubitma",
