@@ -16,8 +16,8 @@ class Rsp
     public static function ok (array $data = null): array
     {
         $response = [
-            'code' => Code::OK,
-            'msg'  => Code::$SYS_MSG[Code::OK],
+            'code' => CodeMsg::OK,
+            'msg'  => CodeMsg::$SYS_MSG[CodeMsg::OK],
         ];
 
         if (!is_null($data)) {
@@ -33,13 +33,9 @@ class Rsp
      * @param string $msg
      * @return array
      */
-    public static function err (int $code = Code::ERR_SYS, string $msg = ''): array
+    public static function err (int $code = CodeMsg::SYS, string $msg = ''): array
     {
-        if ($code > Code::MAX_SYS_CODE) {
-            [$code, $msg] = Code::response($code, $msg);
-        } else {
-            $msg = empty($msg) ? Code::$SYS_MSG[$code] : $msg;
-        }
+        [$code, $msg] = CodeMsg::codeMsg($code, $msg);
         return compact('code', 'msg');
     }
 
