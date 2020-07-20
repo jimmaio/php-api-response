@@ -35,10 +35,11 @@ class Rsp
      */
     public static function err (int $code = CodeMsg::SYS, string $msg = ''): array
     {
-        [$code, $msg] = CodeMsg::codeMsg($code, $msg);
+        [$code, $msg] = (isset($_REQUEST[CodeMsg::CURRENT_CLASS_NAME]) && class_exists($_REQUEST[CodeMsg::CURRENT_CLASS_NAME]))
+            ? call_user_func([$_REQUEST[CodeMsg::CURRENT_CLASS_NAME], 'codeMsg'], $code, $msg)
+            : CodeMsg::codeMsg($code, $msg);
         return compact('code', 'msg');
     }
-
 
 
 }

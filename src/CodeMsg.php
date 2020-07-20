@@ -10,8 +10,14 @@ class CodeMsg
 {
     /**
      * Code prefix name for environment
+     * Save in $_ENV
      */
-    const PREFIX_ENV_NAME = 'API_RSP_FRE';
+    const PREFIX_ENV_NAME    = 'API_RSP_FRE';
+
+    /**
+     * Save in $_REQUEST
+     */
+    const CURRENT_CLASS_NAME = 'API_RSP_CLASS';
 
     const OK           = 200;
     const BAD_REQUEST  = 400;
